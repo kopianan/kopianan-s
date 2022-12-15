@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:kopianan_s/routes/kopi_route.dart';
 
-import 'pages/home_page.dart';
+import 'pages/home/home_page.dart';
 
 class App extends StatelessWidget {
-  const App({super.key});
- 
+  App({super.key});
+  final _appRouter = KopiRoute();
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Kopianans',
+      routerDelegate: _appRouter.delegate(),
+      routeInformationParser: _appRouter.defaultRouteParser(),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const HomePage(),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:kopianan_s/applications/auth/authentication_cubit.dart';
+import 'package:kopianan_s/injection.dart';
 import 'package:kopianan_s/routes/kopi_route.dart';
 
 class SettingPage extends StatefulWidget {
@@ -31,27 +33,14 @@ class _SettingPageState extends State<SettingPage> {
       ),
       appBar: AppBar(title: Text("SettingPage")),
       body: Center(
-        child: ElevatedButton(
-          child: Text("Next"),
-          onPressed: () {
-            // Splash =>Login => Home  => Setting => Profile
-            // AutoRouter.of(context).push(ProfileRoute());
-
-            // AutoRouter.of(context).pushAndPopUntil(
-            //   ProfileRoute(),
-            //   predicate: ModalRoute.withName(LoginRoute.name),
-            // );
-
-            AutoRouter.of(context).replaceAll([
-              SplashRoute(),
-              LoginRoute(),
-              ProfileRoute(),
-            ]);
-
-            // AutoRouter.of(context).popUntil((route) => false);
-            // AutoRouter.of(context).pushAndPopUntil(ProfileRoute(),
-            //     predicate: ModalRoute.withName(HomeRoute.name));
-          },
+        child: SizedBox(
+          width: double.infinity,
+          child: TextButton(
+            child: Text("Log out"),
+            onPressed: () {
+              getIt<AuthenticationCubit>().logOutUser(); 
+            },
+          ),
         ),
       ),
     );

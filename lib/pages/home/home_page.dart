@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:kopianan_s/injection.dart';
 import 'package:kopianan_s/routes/kopi_route.dart';
 
 class HomePage extends StatefulWidget {
@@ -23,7 +24,12 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("HomePage")),
+      appBar: AppBar(
+        title: Text("HomePage"),
+        actions: [IconButton(onPressed: () {
+          getIt<KopiRoute>().push(SettingRoute()); 
+        }, icon: Icon(Icons.settings))],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Login > Home
@@ -36,7 +42,7 @@ class _HomePageState extends State<HomePage> {
           child: Text("NEXT"),
           onPressed: () {
             //Login => Home  => Setting => Profile
-            //Login => Setting => Profile  
+            //Login => Setting => Profile
             AutoRouter.of(context).push(SettingRoute());
             // AutoRouter.of(context).popAndPush(
             //   SettingRoute(),

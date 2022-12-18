@@ -69,7 +69,7 @@ class _$KopiRoute extends RootStackRouter {
         ),
         RouteConfig(
           LoginRoute.name,
-          path: '/login-page',
+          path: '/login',
         ),
       ];
 }
@@ -128,7 +128,7 @@ class LoginRoute extends PageRouteInfo<void> {
   const LoginRoute()
       : super(
           LoginRoute.name,
-          path: '/login-page',
+          path: '/login',
         );
 
   static const String name = 'LoginRoute';

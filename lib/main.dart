@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:kopianan_s/app.dart';
+import 'package:kopianan_s/applications/auth/authentication_cubit.dart';
 import 'package:kopianan_s/injection.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,5 +13,8 @@ Future<void> main() async {
     anonKey:
         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqcGZncHh4ZW52anBtY3Jnc21zIiwicm9sZSI6ImFub24iLCJpYXQiOjE2NjIyMDg0MzUsImV4cCI6MTk3Nzc4NDQzNX0.be5Jebz9Eg6mQrobYJUoyTWB8MPfnoi_yMz-7EqBD5A',
   );
-  runApp(App());
+  runApp(BlocProvider(
+    create: (context) => getIt<AuthenticationCubit>(),
+    child: App(),
+  ));
 }

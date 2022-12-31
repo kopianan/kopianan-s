@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:kopianan_s/injection.dart';
 import 'package:kopianan_s/routes/kopi_route.dart';
 
 import 'pages/home/home_page.dart';
 
 class App extends StatelessWidget {
   App({super.key});
-  final _appRouter = KopiRoute();
+  final _appRouter = getIt<KopiRoute>();
 
   @override
   Widget build(BuildContext context) {

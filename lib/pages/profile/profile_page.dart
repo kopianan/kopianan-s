@@ -23,10 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: ElevatedButton(
           child: Text("TEST"),
           onPressed: () {
-            // Splash =>Login => Home  => Setting => Profile
-            // AutoRouter.of(context).pushNamed(LoginPage.routeName);
-            
-            AutoRouter.of(context).popUntilRouteWithName(HomeRoute.name); 
+            AutoRouter.of(context).push(SettingRoute());
 
             // AutoRouter.of(context).popAndPush(
             //   HomeRoute(),

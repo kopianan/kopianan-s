@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kopianan_s/pages/auth/login_page.dart';
 import 'package:kopianan_s/pages/home/home_page.dart';
 import 'package:kopianan_s/pages/profile/profile_page.dart';
@@ -18,5 +19,5 @@ part 'kopi_route.gr.dart';
     AutoRoute(page: LoginPage, path: LoginPage.routeName),
   ],
 )
-// extend the generated private router
+@singleton
 class KopiRoute extends _$KopiRoute {}

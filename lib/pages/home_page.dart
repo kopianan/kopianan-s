@@ -5,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kopianan_s/cubit/counter_cubit.dart';
 import 'dart:math';
 
+import 'package:kopianan_s/pages/profile_page.dart';
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -15,13 +17,21 @@ class HomePage extends StatelessWidget {
         create: (context) => counterCubit,
         child: Scaffold(
           appBar: AppBar(),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => ProfilePage(
+                        counterCubit: counterCubit,
+                      )));
+            },
+            child: Icon(Icons.arrow_right_alt_rounded),
+          ),
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               BlocBuilder<CounterCubit, CounterState>(
                   builder: (context, state) {
-                print("REBUILD SCAFFOLD");
                 return Text(
                   state.name,
                   style: TextStyle(fontSize: 30),
@@ -33,6 +43,12 @@ class HomePage extends StatelessWidget {
                   counterCubit.updateName("Anan Alfred ${newName}");
                 },
                 child: Text("Set Random"),
+              ),
+              TextButton(
+                onPressed: () {
+                  counterCubit.resetData();
+                },
+                child: Text("RESET"),
               )
             ],
           ),

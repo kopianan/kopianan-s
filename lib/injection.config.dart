@@ -22,6 +22,6 @@ _i1.GetIt init(
     environment,
     environmentFilter,
   );
-  gh.factory<_i3.CounterCubit>(() => _i3.CounterCubit());
+  gh.lazySingleton<_i3.CounterCubit>(() => _i3.CounterCubit());
   return getIt;
 }

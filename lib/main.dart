@@ -7,8 +7,10 @@ import 'package:kopianan_s/injection.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  runApp(BlocProvider(
-    create: (context) => getIt<CounterCubit>(),
-    child: App(),
-  ));
+  runApp(
+    BlocProvider(
+      create: (context) => getIt<CounterCubit>(),
+      child: App(),
+    ),
+  );
 }
